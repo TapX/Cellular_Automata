@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "Simulation Input";
+}
+
+<!-- This is the View for the START SIMULATION page. It displays the following information:
+    1) An input box for the rule number (with client-side validation).
+    2) An input box for the simulation length (with client-side validation).
+    3) An input box for the starting state (with client-side validation).
+    
+    It will also output an error message if there is a problem with server-side validation. -->
+
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title Page</h1>
+            </hgroup>
+        </div>
+    </section>
+}
+
+<form action="CellInput/StartSim" method="post" enctype="multipart/form-data">
+    <fieldset>
+        <legend>Set the simulation parameters</legend>
+        <br><br>
+        <div>
+            <label for="Rule">Simulation rule (0-255):</label>
+            <input type="number" required name="Rule" value="30" min="0" max="255"/>
+        </div>
+        <div>
+            <label for="Steps">Simulation steps:</label>
+            <input type="number" required name="Steps" value="100" min="1" max="512"/>
+        </div>
+        <div>
+            <label for="Start">Starting state (binary string):</label>
+            <input type="text" required name="Start" value="1" pattern="[0-1]{1,20}"/>
+        </div>
+        <br><br>
+        <input type="submit" value="Start simulation">
+    </fieldset>
+</form>
+@if (ViewBag.invalid)
+{
+    <p><b>Invalid parameters entered. Please ensure the parameters are in the following format:</b><br /><br />
+        Simulation rule is a number between 0 and 255 (inclusive)<br />
+        Simulation steps is a number between 1 and 512 (inclusive)<br />
+        Starting state is a series of 1's and 0's (no other characters allowed)
+    </p>
+}

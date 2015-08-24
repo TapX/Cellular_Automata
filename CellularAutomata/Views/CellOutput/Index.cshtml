@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Results";
+}
+
+<!-- This is the View for the RESULTS page. It displays the following information:
+    1) A link for the ASCII-based text results file.
+    2) The actual ASCII-based text output (for simulation length less than 100).
+    3) The bitmap image of the output, sized to a comfortable width of 1000 pixels.
+    4) An error message if the user landed on the page without simulation data being sent to the controller. -->
+
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title Page</h1>
+            </hgroup>
+        </div>
+    </section>
+}
+
+<h2>Cellular Automation Results for Rule @ViewBag.rule</h2>
+
+@if (!ViewBag.noSim)
+{
+    <h3>ASCII Output</h3>
+    <p>You can download the ASCII Output as a text file <a href="CellOutput/DownloadTxt">here</a>. </p>
+
+    if (ViewBag.dispAscii)
+    {
+        <pre>
+        @foreach(string tempString in ViewBag.asciiData)
+        {
+            @tempString
+        }
+        </pre>
+    }
+    else
+    {
+        <p>ASCII Output will only be displayed for step sizes of less than 100 (but you can always download the text file above).</p>
+    }
+
+    <h3>Image Output</h3>
+    <p>Be mesmerized by this beautiful bitmap image.</p>
+    <br />
+    <img src="@Url.Action("getBitmap","CellOutput")" width="1000"/>
+}
+else
+{
+    <h3>Oops! Run the simulation again for results.</h3>
+}

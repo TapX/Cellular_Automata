@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Home";
+}
+
+<!-- This is the View for the HOME page. It simply displays some useful instructions, and a link to the START SIMULATION page. -->
+
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title Page</h1>
+            </hgroup>
+        </div>
+    </section>
+}
+
+<h2>Automate your cells, today!</h2>
+<h3>... But only in one dimension ...</h3>
+<p>Welcome to this cellular automator created by Jason and Tiaan.</p>
+<p>Now we know you are keen to get started with your cell simulations, but what if you just don't know how?
+    Simply follow these steps:
+</p>
+<ol class="round">
+    <li class="one">
+        <h5>Choose a rule</h5>
+        This rule will describe how the cells propogate over time. Get creative when choosing your rule (make sure its between 0 and 255).
+    </li>
+
+    <li class="two">
+        <h5>Choose how long the simulation must run</h5>
+        It can be as big as you want! (Just make sure its less than 512).
+    </li>
+
+    <li class="three">
+        <h5>Set the starting state</h5>
+        We suggest using '1'. Why complicate things?
+    </li>
+
+    <li class="four">
+        <h5>Have your brains be-fazzled</h5>
+        Wow... so great!
+    </li>
+</ol>
+
+<br />
+<a href="CellInput">Get Started</a>
